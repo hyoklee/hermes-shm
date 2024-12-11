@@ -14,6 +14,7 @@
 #include "test_init.h"
 #include "omp.h"
 
+#include <random>
 #include <string>
 #include "hermes_shm/data_structures/ipc/string.h"
 #include "hermes_shm/util/config_parse.h"

@@ -14,6 +14,8 @@
 #include "test_init.h"
 #include "basic_test.h"
 
+#include <random>
+
 struct Record {
   char *data;
   size_t size;
