@@ -15,7 +15,7 @@ SPACK_DIR=${INSTALL_DIR}/spack
 mkdir -p "${HOME}/install"
 mkdir build
 pushd build
-spack load --only dependencies hermes-shm
+spack load -r hermes-shm
 cmake ../ \
 -DCMAKE_BUILD_TYPE=Debug \
 -DHERMES_ENABLE_COVERAGE=ON \
