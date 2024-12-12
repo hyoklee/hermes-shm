@@ -1,0 +1,32 @@
+name: mac
+
+on:
+  workflow_dispatch:
+  push:
+    branches: master
+
+jobs:
+  build:
+    name: mac
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: install
+        run: |
+          brew install automake boost libelf libomp libtool llvm open-mpi
+      - name: test
+        run: |
+          ls /opt/homebrew/opt/libomp/lib
+          export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+          export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/libomp/lib"
+          export CPPFLAGS="-I/opt/homebrew/opt/llvm/include -I/opt/homebrew/opt/libomp/include"
+          export DYLD_LIBRARY_PATH="/opt/homebrew/opt/libomp/lib:$DYLD_LIBRARY_PATH"
+          export OpenMP_C_FLAGS="-fopenmp"
+          export OpenMP_C_LIB_NAMES="omp"
+          export OpenMP_C_INCLUDE_DIRS="/opt/homebrew/opt/libomp/include"
+          export OpenMP_C_LIBRARY_DIRR="/opt/homebrew/opt/libomp/lib"
+          mkdir build
+          cd build
+          cmake ..
+          
+
