@@ -16,6 +16,7 @@ jobs:
           brew install automake boost catch2 libelf libomp libtool llvm open-mpi
       - name: test
         run: |
+          export OpenMP_ROOT=$(brew --prefix)/opt/libomp
           ls /opt/homebrew/opt/libomp/lib
           export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
           export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/libomp/lib"
