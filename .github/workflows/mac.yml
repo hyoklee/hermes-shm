@@ -14,6 +14,8 @@ jobs:
       - name: install
         run: |
           brew install automake boost catch2 libelf libomp libtool llvm open-mpi
+      - name: spack
+          run: bash scripts/ci/install_deps.sh
       - name: test
         run: |
           export OpenMP_ROOT=$(brew --prefix)/opt/libomp
